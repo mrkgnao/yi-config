@@ -1,12 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
--- This example requires manual rebuild (as opposed to dynamic ones, automatically rebuilding the
--- config upon changes). This config is useful for distribution of the editor in binary form as such
--- a build have almost all libraries statically linked in.
--- Here's a building example with "stack":
--- 1. Edit "stack.yaml" file so that "location: " would point to the root of the Yi source code
--- 2. Run "stack install"
--- The final name of the executable can be changed in the "package.yaml" file.
+-- | A modification of the yi-all-static template, with stuff from
+-- ethercrow et al.
 
 import Control.Monad.State.Lazy (execStateT)
 import Data.List                (intersperse)
@@ -44,6 +39,8 @@ import qualified Yi.Keymap.Vim.Utils as V
 
 import Yi.Mode.Haskell as Hs (fastMode, cleverMode, preciseMode)
 import Yi.Config.Simple (addMode)
+
+import Yi.Fuzzy
 
 import Themes
 
@@ -95,10 +92,12 @@ myBindings eval =
                                              (evs `V.matchesString` x)
                                     _ -> V.NoMatch)
         defEval = V.pureEval (extractValue V.defVimConfig)
-    in [ nmap "<BS>" previousTabE
-       , nmap "<Tab>" nextTabE
-       , nmap " ;" (eval ":nohlsearch<CR>")
+    in [ nmap " " (eval ":nohlsearch<CR>")
        , nmap ";" (eval ":")
+       , nmap "<C-n>" nextTabE
+       , nmap "<C-p>" previousTabE
+       , nmap "<S-|>" splitE
+       , nmapY "<C-t>" fuzzyOpen
        ]
 
 -- Intero
