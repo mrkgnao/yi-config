@@ -28,6 +28,7 @@ flags:
 dependencies:
     - base >= 4.8 && < 5
     - microlens-platform
+    - lens
     - mtl
     - optparse-applicative >= 0.13.0.0
     - yi-core
@@ -39,6 +40,8 @@ dependencies:
     - yi-intero
     - yi-fuzzy-open
     - oo-prototypes
+    - attoparsec
+    - text
 
 when:
   - condition: flag(vty)

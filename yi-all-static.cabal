@@ -44,6 +44,7 @@ executable yi
   build-depends:
       base >= 4.8 && < 5
     , microlens-platform
+    , lens
     , mtl
     , optparse-applicative >= 0.13.0.0
     , yi-core
@@ -55,6 +56,8 @@ executable yi
     , yi-intero
     , yi-fuzzy-open
     , oo-prototypes
+    , attoparsec
+    , text
   if flag(vty)
     cpp-options: -DVTY
     build-depends:

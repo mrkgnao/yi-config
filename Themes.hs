@@ -9,6 +9,11 @@ import Yi.Style hiding (cyan, red, magenta, green, blue)
 fg = withFg
 bg = withBg
 
+italicized = withItlc True
+reversed = withReverse True
+emboldened = withBd True
+underlined = withUnderline True
+
 solarizedDark :: Theme
 solarizedDark = Proto $ const UIStyle
   { modelineAttributes = emptyAttributes { foreground = base03, background = base00 }
@@ -22,27 +27,26 @@ solarizedDark = Proto $ const UIStyle
 
   , selectedStyle      = fg base01 <> bg base2
   , eofStyle           = fg red
-  , errorStyle         = bg red
+  , errorStyle         = reversed <> bg red
   , hintStyle          = bg base03
   , strongHintStyle    = bg blue
 
   , commentStyle       = fg base0
-  , blockCommentStyle  = fg base0
+  , blockCommentStyle  = fg base1
   , keywordStyle       = fg green
   , variableStyle      = fg cyan
   , operatorStyle      = fg red
   , numberStyle        = fg orange
   , preprocessorStyle  = fg magenta
-
   , stringStyle        = fg violet
   , longStringStyle    = fg violet
 
   , typeStyle          = fg blue
   , dataConstructorStyle
-                       = fg blue
+                       = italicized <> fg blue
   , builtinStyle       = fg yellow
 
-  , importStyle        = fg green
+  , importStyle        = fg blue
   , regexStyle         = fg red
 
   , makeFileRuleHead   = fg blue
