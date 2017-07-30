@@ -1,0 +1,18 @@
+resolver: lts-9.0
+packages:
+- '.'
+- location: '../yi/'
+  subdirs:
+    - 'yi-core'
+    - 'yi-frontend-vty'
+    - 'yi-frontend-pango'
+    - 'yi-language'
+    - 'yi-keymap-vim'
+    - 'yi-keymap-emacs'
+    - 'yi-misc-modes'
+    - 'yi-mode-haskell'
+    - 'yi-mode-javascript'
+    - 'yi-language'
+    - 'yi-intero'
+    - 'yi-fuzzy-open'
+extra-deps: []
